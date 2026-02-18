@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <h1>hiii? 💕</h1>
+
+    <!-- Cute Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            font-family: 'Pacifico', cursive;
+            background: linear-gradient(to bottom right, #ffd6e8, #ffe6f2);
+            overflow: hidden;
+        }
+
+h1 {
+            color: #ff4da6;
+            font-size: 40px;
+            margin-top: 20px;
+            text-shadow: 2px 2px 5px white;
+        }
+
+        img {
+            width: 300px;
+            margin-top: 30px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        button {
+            padding: 12px 25px;
+            font-size: 20px;
+            margin: 15px;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        #yesBtn {
+            background-color: #ff66b2;
+            color: white;
+            box-shadow: 0 0 15px #ff99cc;
+        }
+
+        #yesBtn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 25px #ff3399;
+        }
+
+#noBtn {
+            background-color: #aaa;
+            color: white;
+            position: absolute;
+        }
+
+        /* Floating hearts */
+        .heart {
+            position: absolute;
+            color: #ff4da6;
+            font-size: 20px;
+            animation: floatHearts 6s linear infinite;
+        }
+
+        @keyframes floatHearts {
+            0% { transform: translateY(100vh); opacity: 1; }
+            100% { transform: translateY(-10vh); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- sideeye GIF -->
+    <img src="sideye.gif" alt="sideye">
+
+    <h1>Do you love me? 💖</h1>
+
+    <button id="yesBtn" onclick="goToLovePage()">Yes 💕</button>
+    <button id="noBtn" onmouseover="moveButton()">No 😢</button>
+<!-- Optional background music -->
+    <!-- Replace music.mp3 with your file -->
+    <!--
+    <audio autoplay loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+    -->
+
+<script>
+    let noSize = 1;
+
+    function moveButton() {
+        const button = document.getElementById("noBtn");
+
+        const x = Math.random() * (window.innerWidth - 100);
+        const y = Math.random() * (window.innerHeight - 50);
+
+        button.style.left = x + "px";
+        button.style.top = y + "px";
+
+        // Shrink button every time
+        noSize -= 0.1;
+        if (noSize > 0.3) {
+            button.style.transform = "scale(" + noSize + ")";
+        }
+    }
+function goToLovePage() {
+        window.location.href = "love.html";
+    }
+
+    // Create floating hearts
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "💗";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = Math.random() * 20 + 10 + "px";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 6000);
+    }
+
+    setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
